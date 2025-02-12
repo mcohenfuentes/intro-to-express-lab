@@ -50,9 +50,11 @@ const shoes = [
     { name: "Fifty-Inch Heels", price: 175, type: "heel" }
 ];
 
-
-
 app.get('/shoes', (req, res) => {
+    const minPrice = req.query.minPrice
+    const maxPrice = req.query.maxPrice
+    const type = req.query.type 
+
     
 });
 
