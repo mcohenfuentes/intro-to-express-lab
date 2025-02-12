@@ -55,13 +55,25 @@ app.get('/shoes', (req, res) => {
     const maxPrice = req.query.maxPrice
     const type = req.query.type 
 
-    
+    if (minPrice) {
+        const shoesMinPrice = shoes.filter((shoe) => {
+            return shoe.price > req.query.minPrice;
+        })
+        res.send(shoesMinPrice)
+    } else if (maxPrice) {
+        const shoesMaxPrice = shoes.filter((shoe) => {
+            return shoe.price < req.query.maxPrice;
+        })
+        res.send(shoesMaxPrice)
+    } else if (type) {
+        const shoesType = shoes.filter((shoe) => {
+            return shoe.type === req.query.type;
+        })
+        res.send(shoesType)
+    } else {
+        res.send(shoes)
+    } 
 });
-
-
-
-
-
 
 app.listen(3000, () => {
     console.log('listening on port 3000')
